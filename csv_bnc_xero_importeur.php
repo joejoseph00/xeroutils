@@ -7,7 +7,8 @@
 // To Reac CSV File
 $csvfile = '2019_avril_mai.csv';
 $handle = fopen($csvfile, "r");
-echo '<table border="1"><tr><td>Column 1</td><td>Column 2</td></tr><tr>';
+echo '<table border="1">' . "\n";
+echo "<tr><td>Banque Nationale CSV</td><td>Vers le format csv de XERO.com</td></tr>\n<tr>";
 $newCsvArray = array();
 $rowCount = 0;
 while (($data = fgetcsv($handle, "r")) !== FALSE) {
@@ -27,7 +28,7 @@ while (($data = fgetcsv($handle, "r")) !== FALSE) {
           }
         }
         else {
-          echo $data[3] . "\n<br>";
+          echo "<span>" . $data[3] . "</span>\n<br>";
         }
       }
       if (!empty($data[4])) {
@@ -72,8 +73,10 @@ while (($data = fgetcsv($handle, "r")) !== FALSE) {
     // output data
     echo "<td>$data[$c]</td>";
   }
-  echo "</tr><tr>";
+  echo "</tr>\n<tr>";
 }
+echo "<br><br>\n";
+echo "<br><br>\n";
 
 $colsNew = count($newCsvArray[1]);
 for ($row = 1; $row < count($newCsvArray); $row++) {
@@ -87,10 +90,10 @@ for ($row = 1; $row < count($newCsvArray); $row++) {
       echo "<td>WTF?:$c</td>";
     }
   }
-  echo "</tr><tr>";
+  echo "</tr>\n<tr>";
 }
 fclose($handle);
-echo "</tr>";
+echo "</tr>\n";
 echo "</table>";
 
 
